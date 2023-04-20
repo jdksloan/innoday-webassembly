@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module">
+    import { add, hello } from "./build/release.js";
+
+    window.addInts =  function addInts() {
+        var theForm = document.forms['addForm'];
+        if (!theForm) {
+            theForm = document.addForm;
+        }
+        var intA = theForm.intA.value;
+        var intB = theForm.intB.value; 
+
+        document.getElementById("intResult").innerHTML = add(intA, intB)
+    }
+
+    window.helloName =  function addInts() {
+        var theForm = document.forms['helloForm'];
+        if (!theForm) {
+            theForm = document.helloForm;
+        }
+        var name = theForm.name.value;
+
+        document.getElementById("helloResult").innerHTML = hello(name)
+    }
+</script>
+</head>
+<body>
+    <form name="addForm">
+        <label id="intA" for="intA" placeholder="Enter Integer A...">Integer A:</label>
+        <input type="text" name="intA" id="intA" />
+        <label id="intB" for="intB" placeholder="Enter Integer B...">Integer B:</label>
+        <input type="text" name="intB" id="intB" />
+        <br />
+        <input type="button" name="submit" id="submit" value="Add" onclick="addInts(); return false;"/>
+    </form>
+    <label id="intResult"></label>
+
+    <hr/>
+    <form name="helloForm">
+        <label id="name" for="name" placeholder="Enter Name...">Name:</label>
+        <input type="text" name="name" id="name" />
+        <br />
+        <input type="button" name="submitName" id="submitName" value="Hello" onclick="helloName(); return false;"/>
+    </form>
+    <label id="helloResult"></label>
+</body>
+</html>
